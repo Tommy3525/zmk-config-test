@@ -1,0 +1,38 @@
+/ {
+    matrix {
+        compatible = "zmk,matrix";
+        rows = <6>; // Number of rows in the matrix
+        cols = <4>; // Number of columns in the matrix
+
+        row-gpios = < 
+            &gpio0 6 (GPIO_ACTIVE_LOW)>, 
+            <&gpio0 10 (GPIO_ACTIVE_LOW)>, 
+            <&gpio0 11 (GPIO_ACTIVE_LOW)>, 
+            <&gpio0 13 (GPIO_ACTIVE_LOW)>, 
+            <&gpio0 15 (GPIO_ACTIVE_LOW)>, 
+            <&gpio0 2 (GPIO_ACTIVE_LOW)>
+        >;
+
+        col-gpios = <
+            &gpio1 0 (GPIO_ACTIVE_LOW)>,
+            &gpio1 9 (GPIO_ACTIVE_LOW)>, 
+            <&gpio1 11 (GPIO_ACTIVE_LOW)>, 
+            <&gpio1 4 (GPIO_ACTIVE_LOW)>
+        >;
+
+        diode-direction = "col2row"; // Adjust if you are using "row2col"
+    };
+
+    leds {
+        compatible = "zmk,led-indicators";
+        label = "Indicators";
+        gpios = <
+            &gpio1 12 (GPIO_ACTIVE_HIGH) // Example LED pin
+        >;
+    };
+
+    battery {
+        compatible = "zmk,battery";
+        label = "Battery Voltage";
+    };
+};
